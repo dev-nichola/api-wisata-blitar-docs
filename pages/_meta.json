@@ -1,15 +1,18 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "about": {
-    "title": "About",
-    "type": "page"
+  "-": {
+    "type": "separator",
+    "title": "Getting Started"
   },
-  "contact": {
-    "title": "Contact ↗",
-    "type": "page",
-    "href": "https://twitter.com/shuding_",
-    "newWindow": true
-  }
+  "index": "Introduction",
+  "--": {
+    "type": "separator",
+    "title": "Features"
+  },
+  "kota": "Kota (City)",
+  "kabupaten": "Kabupaten (Regency)",
+  "---": {
+    "type": "separator",
+    "title": "Appendix"
+  },
+  "references": "References"
 }

@@ -1,0 +1,225 @@
+import { Callout } from 'nextra/components';
+
+# Get List of Wisata Kabupaten Blitar
+
+Fetches a list of tourism in blitar regency.
+
+### Endpoint
+
+```md filename="Base URL"
+http://wisata-blitar-api.my.id/kabupaten
+
+or, if running on local
+
+http://127.0.0.1:8000/kabupaten
+```
+
+```md filename="Method and Endpoint"
+GET /kabupaten
+```
+
+### Query Params
+
+#### Filtering
+
+##### `name` : string (optional)
+
+Name of tourist attractions. Uses a `LIKE` SQL Query behind the scenes. This results in tourist spot name, name substring matches being returned as well. Oh, and it's case insensitive.
+
+##### `id` : string (optional)
+
+id . Uses a `LIKE` SQL Query behind the scenes. This results in tourism id substring matches being returned as well. Oh, and it's case insensitive.
+
+##### `address` : string (optional)
+
+address of tourist attractions. Uses a `LIKE` SQL Query behind the scenes. This results in address substring matches being returned as well. and it's case insensitive.
+
+##### `category` : string (optional)
+
+tourist attractions category. Using SQL LIKE queries behind the scenes. This results in category substring matches being returned as well. and it is case insensitive.
+
+##### `district` : string (optional)
+
+displays tourist attractions in the sub-district. Using SQL LIKE queries behind the scenes. This results in district substring matches being returned as well. and it is case insensitive.
+
+#### Pagination
+
+##### `page` : number (optional)
+
+Page number to be fetched. This will have a default value of `1` when a value is not given.
+
+##### `size` : number (optional)
+
+Number of data to be fetched inside a single page. This will have a default value of `10` when a value is not given.
+
+#### Sorting
+
+Not yet supported. Very open to contributions if you want to add this feature 😀.
+
+### Responses
+
+#### Meta
+
+We provide a `meta` object for paginable response data lists. They should be self explanatory, however here's a brief explanation.
+
+- `current_page`: The current page.
+- `from`: displays the current data order
+- `last_page`: The number of total page.
+- `links`: display the data url on another page.
+
+
+#### 200 (success)
+
+```md filename="Example Request"
+GET http://wisata-blitar-api.my.id/kabupaten?district=bakung
+```
+
+```json filename="Example Response"
+    {
+    "data": [
+        {
+            "id": 4,
+            "name": "Pantai Pangi",
+            "description": "Pantai Pangi merupakan salah satu tempat wisata pantai di Blitar yang cukup terkenal. Pantai ini tampak seperti teluk, dengan bebatuan karang yang menutupinya. Lokasinya yang cukup tersembunyi menyebabkan keasrian alam pantai ini tetap terjaga. Selain itu, pantai ini menawarkan suasana pedesaan yang akan membuat kalian betah berlama-lama di tempat wisata ini. Apabila kalian ingin \"menyatu dengan alam\", kalian dapat camping di pantai ini bersama teman-teman terdekat. Lokasi pantai ini terletak di Desa Tumpak Kepuh, Kecamatan Bakung, Kabupaten Blitar.",
+            "address": "Tumpakkepuh, Bakung, Blitar, Jawa Timur",
+            "category": "Pantai",
+            "district": "Bakung",
+            "regency": "Kabupaten Blitar"
+        },
+        {
+            "id": 9,
+            "name": "Pantai Umbul Waru",
+            "description": "Tempat wisata di Blitar yang lagi hits adalah wisata Pantai Umbul Waru. Pantai ini terletak di Desa Sidomulyo, Kecamatan Bakung, Kabupaten Blitar. Pantai ini sangat unik karena memiliki air terjun yang mengalir dari atas bukit menuju ke Samudra Hindia. Akses menuju lokasi pantai ini cukup sulit karena kalian harus melalui jalanan terjal dan sempit. Apabila kalian akan menuju ke sana, kami rekomendasikan untuk menyiapkan perbekalan yang cukup.",
+            "address": "Sidomulyo, Bakung, Blitar, Jawa Timur",
+            "category": "Pantai",
+            "district": "Bakung",
+            "regency": "Kabupaten Blitar"
+        },
+        {
+            "id": 14,
+            "name": "Curug dan Kedung Badrun Blitar",
+            "description": "Masih berhubungan dengan air, kali ini kita akan menuju ke Desa Balulawang, Kecamatan Bakung, Kabupaten Blitar. Wisata baru di Blitar ini tergolong masih asri dan belum banyak dikunjungi oleh wisatawan. Di sini kalian dapat mandi di sebuah kolam yang jernih dan bersih. Sementara itu, di Curug Badun kalian akan melihat curug bertingkat dengan ketinggian sekitar 8 meter.",
+            "address": "Tumpakoyot dan Bululawang, Bakung, Blitar, Jawa Timur",
+            "category": "Air Terjun",
+            "district": "Bakung",
+            "regency": "Kabupaten Blitar"
+        },
+        {
+            "id": 15,
+            "name": "Air Terjun Tirto Galuh Blitar",
+            "description": "Air Terjun Tirto Galuh Blitar adalah air terjun yang juga mulai terkenal akhir-akhir ini. Di tempat ini, kita bisa melihat air mengalir di atas bebatuan yang berlumut namun elok dipandang mata. Akses jalan untuk sampai ke Air Terjun Tirto Galuh Blitar cukup jauh. Setelah naik motor dan memarkir motor seharga Rp2.000, Anda harus berjalan sekitar 400 meter untuk sampai di lokasi. Kalau sedang tidak beruntung, perjalanan sepanjang itu harus ditambah dengan jalanan yang becek pasca hujan.",
+            "address": "Bakung, Blitar, Jawa Timur",
+            "category": "Air Terjun",
+            "district": "Bakung",
+            "regency": "Kabupaten Blitar"
+        },
+        {
+            "id": 17,
+            "name": "Tempat Wisata Alam Gua Embultuk",
+            "description": "Wisata alam gua ini terletak di Desa Tampakkepuh, Kecamatan Bakung, Kabupaten Blitar. Di tempat wisata ini, kalian dapat menikmati keunikan stalagmit stalaktit yang menjadi ornamen terpenting yang harus kalian lihat. Gua ini cukup terkenal dan menjadi salah satu destinasi unggulan Kabupaten Blitar, Jawa Timur. Berdasarkan kesaksian warga setempat, Gua ini pernah menjadi salah satu tempat persembunyian simpatisan Partai Komunis Indonesia (PKI).",
+            "address": "Tumpakkepuh, Bakung, Blitar",
+            "category": "Goa",
+            "district": "Bakung",
+            "regency": "Kabupaten Blitar"
+        },
+        {
+            "id": 26,
+            "name": "Monumen Trisula",
+            "description": "Dibangun oleh militer dengan alasan untuk mengenang pembantaian yang terjadi pada 1 Oktober 1965, monumen ini kini sering dikunjungi oleh wisatawan. Sejarah yang kelam memang menyelimuti tempat wisata ini, namun hal itu tidak mengurangi minat para wisatawan, asing maupun domestik untuk berkunjung di lokasi ini. Monumen yang diresmikan sejak Desember 1972 ini menjadi penanda bagi warga Blitar bahwa pernah ada pembantaian manusia yang dituduh makar oleh militer Indonesia.",
+            "address": "Jl. Trisula, Bakung, Blitar, Jawa Timur",
+            "category": "Taman",
+            "district": "Bakung",
+            "regency": "Kabupaten Blitar"
+        },
+        {
+            "id": 75,
+            "name": "Pantai Pasur",
+            "description": "Blitar, dengan letaknya di pesisir selatan, menyajikan beragam pantai yang menarik untuk dikunjungi. Saat ini, setidaknya ada empat pantai yang telah diresmikan sebagai tempat wisata, termasuk Pantai Tambak Rejo, Pantai Serang, Pantai Pangi, dan Pantai Jolosutro. Selain itu, mblitar.net juga berbagi informasi tentang Pantai Pasur, sebuah destinasi menarik meski belum secara resmi diakui sebagai tempat wisata.",
+            "address": " Bululawang, Bakung, Blitar, Jawa Timur",
+            "category": "Pantai",
+            "district": "Bakung",
+            "regency": "Kabupaten Blitar"
+        },
+        {
+            "id": 76,
+            "name": "Pantai Gayasan",
+            "description": "Pantai Gayasan, terletak di Desa Tumpak Kepuh, Kecamatan Bakung, Kabupaten Blitar, menawarkan keindahan pesona pasir putih dan pemandangan alam yang memukau. Pantai ini berada di antara Pantai Tambakrejo dan Pantai Pangi, menjadikannya destinasi wisata yang ideal untuk menikmati liburan bersama keluarga. Lokasinya dibelakang hutan gayasan atau \"alas\" gayasan, yang kini ditanami tebu oleh masyarakat sekitar. Oleh karena itu, pantai Gayasan jarang terlihat, namun deruan ombaknya dapat terdengar hingga tiga kilometer dari bibir pantai, menambah pesonanya.",
+            "address": "Tumpakkepuh, Bakung, Blitar, Jawa Timur",
+            "category": "Pantai",
+            "district": "Bakung",
+            "regency": "Kabupaten Blitar"
+        }
+    ],
+    "links": {
+        "first": "http://wisata-blitar-api.my.id/kabupaten?page=1",
+        "last": "http://wisata-blitar-api.my.id/kabupaten?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "active": false
+            },
+            {
+                "url": "http://wisata-blitar-api.my.id/kabupaten?page=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "active": false
+            }
+        ],
+        "path": "http://wisata-blitar-api.my.id/kabupaten",
+        "per_page": 10,
+        "to": 8,
+        "total": 8
+    }
+}
+```
+
+<Callout>
+  Filters not matching any data will still result in a successful (200), and will display all data.   
+</Callout>
+
+#### Get data wisata kota blitar by `id` (200)
+
+When using the `id` parameter, the response will be a singular object containing the regency data itself. This was done because code is a unique property that only 1 regency can have.
+
+```md filename="Example Request"
+GET http://wisata-blitar.my.id/kabupaten/1
+```
+
+```json filename="Example Response"
+{
+    "data": {
+        "id": 1,
+        "name": "Candi Penataran",
+        "description": "Candi Penataran secara administratif terletak di Desa Penataran, Kec. Nglegok, Kab.Blitar. Candi ini terletak sekitar 12 km di utara Kota Blitar, berada di kaki Gunung Kelud. Merupakan komplek candi dengan tataruang persegi, memanjang dari barat ke timur yang dibagi menjadi tiga pelataran. Dahulu antar pelataran dipisahkan oleh dinding, namun saat ini dinding yang dimaksud telah runtuh. Komplek candi ini terdiri dari pintu masuk utama, pendopo agung, teras pendopo, Candi Angka Tahun, Candi Naga, Candi Induk, tubuh candi induk, dan Petirtaan Dalam. Candi Penataran merupakan salah satu contoh luar biasa dari ciri arsitektur Jawa Timur, di mana candinya berupa struktur berundak dengan tempat paling suci terletak pada sisi belakang candi.",
+        "address": "Penataran, Nglegok, Blitar, Jawa Timur",
+        "category": "Candi",
+        "district": "Nglegok",
+        "regency": "Kabupaten Blitar"
+    }
+}
+```
+
+<Callout>
+When using the `id` parameter, the response will be a singular object containing the regency data itself. This was done because code is a unique property that only 1 regency can have.
+</Callout>
+
+#### 400 (bad request)
+
+```json filename="Example Response"
+{
+  "statusCode": 400,
+  "message": "bad request"
+}
+```

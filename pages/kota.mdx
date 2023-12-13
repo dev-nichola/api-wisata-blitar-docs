@@ -1,0 +1,190 @@
+import { Callout } from 'nextra/components';
+
+# Get List of Wisata Kota Blitar
+
+Fetches a list of tourism in blitar city.
+
+### Endpoint
+
+```md filename="Base URL"
+http://wisata-blitar-api.my.id/kota
+
+or, if running on local
+
+http://127.0.0.1:8000/kota
+```
+
+```md filename="Method and Endpoint"
+GET /kota
+```
+
+### Query Params
+
+#### Filtering
+
+##### `name` : string (optional)
+
+Name of tourist attractions. Uses a `LIKE` SQL Query behind the scenes. This results in tourist spot name, name substring matches being returned as well. Oh, and it's case insensitive.
+
+##### `id` : string (optional)
+
+id . Uses a `LIKE` SQL Query behind the scenes. This results in tourism id substring matches being returned as well. Oh, and it's case insensitive.
+
+##### `address` : string (optional)
+
+address of tourist attractions. Uses a `LIKE` SQL Query behind the scenes. This results in address substring matches being returned as well. and it's case insensitive.
+
+##### `category` : string (optional)
+
+tourist attractions category. Using SQL LIKE queries behind the scenes. This results in category substring matches being returned as well. and it is case insensitive.
+
+##### `district` : string (optional)
+
+displays tourist attractions in the sub-district. Using SQL LIKE queries behind the scenes. This results in district substring matches being returned as well. and it is case insensitive.
+
+#### Pagination
+
+##### `page` : number (optional)
+
+Page number to be fetched. This will have a default value of `1` when a value is not given.
+
+##### `size` : number (optional)
+
+Number of data to be fetched inside a single page. This will have a default value of `10` when a value is not given.
+
+#### Sorting
+
+Not yet supported. Very open to contributions if you want to add this feature 😀.
+
+### Responses
+
+#### Meta
+
+We provide a `meta` object for paginable response data lists. They should be self explanatory, however here's a brief explanation.
+
+- `current_page`: The current page.
+- `from`: displays the current data order
+- `last_page`: The number of total page.
+- `links`: display the data url on another page.
+
+
+#### 200 (success)
+
+```md filename="Example Request"
+GET http://wisata-blitar-api.my.id/kota?category=taman
+```
+
+```json filename="Example Response"
+    {
+    "data": [
+        {
+            "id": 23,
+            "name": "Taman Pecut Kota Blitar",
+            "description": "Taman Pecut Kota Blitar terletak di pusat kota Blitar, masih satu kompleks dengan Alun-alun Blitar. Seperti namanya, tempat ini memang mempunyai patung pecut yang ikonik. Patung ini dibuat untuk menjadi simbol atas pusaka Samandiman yang dimiliki oleh Adipati Blitar. Di taman ini, Anda bisa menemukan atraksi air mancur di malam hari. Ragam polah kucuran air dipadu dengan permainan lampu membuat atraksi ini ditunggu banyak wisatawan yang tengah berkunjung di Blitar.",
+            "address": " Jl. Merdeka, Kepanjen Lor, Kepanjenkidul, Kota Blitar, Jawa Timur",
+            "category": "Taman",
+            "district": "Kepanjen Kidul",
+            "regency": "Kota Blitar"
+        },
+        {
+            "id": 24,
+            "name": "Sentul Green Park Blitar",
+            "description": "Di Sentul Green Park Blitar, Anda bisa menghabiskan waktu untuk bersantai di bawah pohon-pohon rindang di kota Blitar. Tempat ini memang dibuat agar masyarakat Blitar mempunyai kawasan yang asri dan penuh dengan pepohonan. Karena terbilang cukup baru, belum banyak orang yang tahu mengenai tempat ini. Hal tersebut ditambah karena akses menuju tempat ini agak tersembunyi, meski sebenarnya tempatnya tidak terlalu jauh dari makam Bung Karno.",
+            "address": " Bendogerit, Sananwetan, Kota Blitar, Jawa Timur",
+            "category": "Taman",
+            "district": "Sananwetan",
+            "regency": "Kota Blitar"
+        },
+        {
+            "id": 25,
+            "name": "Kebonrojo Blitar",
+            "description": "Kebonrojo Blitar adalah sebuah taman yang cocok untuk jalan-jalan bersantai bersama dengan keluarga. Berlokasi di jalan Diponegoro, tepatnya di depan SMAK Diponegoro, taman ini menyediakan wahana permainan ringan dan tanah yang lapang untuk bersantai. Selain permainan dan patung-patung, di taman ini juga terdapat tanaman dan hewan sungguhan seperti burung beo dan burung belibis.",
+            "address": "Jl. Diponegoro No.12, Bendogerit, Sananwetan, Kota Blitar, Jawa Timur",
+            "category": "Taman",
+            "district": "Sananwetan",
+            "regency": "Kota Blitar"
+        },
+        {
+            "id": 30,
+            "name": "Alun-alun Kota Blitar",
+            "description": "Salah satu tempat wisata Blitar dekat stasiun adalah Alun-alun Blitar. Alun-alun ini hanya terletak kurang lebih 500an meter dari stasiun kereta api. Di tempat ini, kalian dapat menikmati wisata kuliner serta menikmati wisata Blitar malam hari. Di Alun-alun Blitar ini, terdapat berbagai fasilitas, di antaranya jogging track, serta fitness outdoor. Wisata di Kota Blitar ini merupakan alternatif lain apabila kalian tidak memiliki kesempatan untuk menjelajahi objek wisata yang lain. Tempat wisata di Blitar dekat stasiun ini sangat cocok digunakan untuk melepas penat setelah menempuh perjalanan yang panjang.",
+            "address": " Jl. Merdeka, Kepanjen Lor, Kepanjenkidul, Kota Blitar, Jawa Timur",
+            "category": "Taman",
+            "district": "Kepanjen Kidul",
+            "regency": "Kota Blitar"
+        }
+    ],
+    "links": {
+        "first": "http://wisata-blitar-api.my.id/kota?page=1",
+        "last": "http://wisata-blitar-api.my.id/kota?page=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "active": false
+            },
+            {
+                "url": "http://wisata-blitar-api.my.id/kota?page=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "active": false
+            }
+        ],
+        "path": "http://wisata-blitar-api.my.id/kota",
+        "per_page": 10,
+        "to": 4,
+        "total": 4
+    }
+```
+
+<Callout>
+  Filters not matching any data will still result in a successful (200), and will display all data.   
+</Callout>
+
+#### Get data wisata kota blitar by `id` (200)
+
+When using the `id` parameter, the response will be a singular object containing the regency data itself. This was done because code is a unique property that only 1 regency can have.
+
+```md filename="Example Request"
+GET http://wisata-blitar-api/kota/19
+```
+
+```json filename="Example Response"
+{
+  {
+    "data": {
+        "id": 19,
+        "name": "Wahana Wisata Water Park Sumberudel",
+        "description": "Wahana keluarga yang satu ini terletak sekitar 500 meter dari makan Bung Karno, tepatnya di Jalan Kali Brantas, Kelurahan Bendo. Di tempat ini, kalian dapat menikmati fasilitas wahana air, seperti kolam renang, papan seluncur, dan masih banyak lagi. Tiket masuk wisata ini cukup murah, yaitu 10.000 pada weekday, dan 15.000 pada weekend. Murah bukan?",
+        "address": "Jl. Kalibrantas, Kepanjen Kidul, Kepanjenkidul, Kota Blitar, Jawa Timur",
+        "category": "Kolam Renang",
+        "district": "Kepanjen Kidul",
+        "regency": "Kota Blitar"
+    }
+}
+}
+```
+
+<Callout>
+When using the `id` parameter, the response will be a singular object containing the regency data itself. This was done because code is a unique property that only 1 regency can have.
+</Callout>
+
+#### 400 (bad request)
+
+```json filename="Example Response"
+{
+  "statusCode": 400,
+  "message": "bad request"
+}
+```

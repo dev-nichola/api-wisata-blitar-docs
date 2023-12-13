@@ -1,11 +1,55 @@
-# Introduction
- 
-Welcome to Nextra! This is a basic docs template. You can use it as a starting point for your own project :)
+import { Callout } from 'nextra/components';
 
-## What is Nextra?
+# Wisata Blitar
 
-A **simple**, **powerful** and **flexible** site generation framework with everything you love from Next.js.
+Wisata Blitar is an open source API that provides access to tourism data in the city and district of Blitar. This API allows developers to retrieve specific tourist location information for their applications or projects.
 
-## Documentation
+## Try it out
+<Callout type="info">
+Try out our free-to-use hosted API at http://wisata-blitar-api.my.id
+</Callout>
 
-The documentation is available at [https://nextra.site](https://nextra.site).
+
+## API Installation
+
+To run the API on your local machine, follow these steps: Clone the repository to your machine and install the required dependencies. We use laravel for our API creation, so make sure composer is installed on your local machine.
+
+```bash
+git clone https://github.com/dev-nichola/wisata-blitar.git
+
+cd wisata-blitar
+
+composer update
+```
+before running the migration make sure that your `.env` is ready
+Run migrations
+
+```bash
+php artisan migrate
+```
+
+Import data from the `/data` folder into your database. We have prepared it and you can run it right away
+
+```bash
+php artisan db:seed
+```
+
+Run the API
+
+```bash
+php artisan serve
+```
+## Contributing
+
+We welcome contributions from the open source community. To contribute to the Wisata Blitar API, please follow these steps:
+
+1. Fork the repository and clone it to your local machine.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and ensure that the codebase remains clean and follows best practices.
+4. Submit a pull request describing your changes and explaining the rationale behind them.
+
+## Roadmap
+
+- [ ] Update to latest data
+- [ ] include images for each tourist spot
+- [ ] Include latitude and longitude
