@@ -2,7 +2,7 @@ import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
 
 const config: {
-  logo: <span><b>Wisata Blitar</b></span>,
+  logo: <span><strong>Wisata Blitar</strong></span>,
   project: {
     link: 'https://github.com/shuding/nextra-docs-template',
   },
